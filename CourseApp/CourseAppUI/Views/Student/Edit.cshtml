@@ -1,0 +1,57 @@
+﻿@model StudentEditResource
+
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <form class="user" asp-action="edit" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="noInput">FullName</label>
+                    <input asp-for="FullName" class="form-control" id="FullNameInput" placeholder="Enter FullName here..">
+                    <span class="text-danger" asp-validation-for="FullName"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="GroupId" class="control-label"></label>
+                    <select asp-for="GroupId" class="form-control" asp-items="@(new SelectList(ViewBag.Groups,"Id","No"))"></select>
+                </div>
+                <div class="form-group">
+                    <label for="limitInput">Email</label>
+                    <input asp-for="Email" class="form-control" id="EmailInput" placeholder="Enter Email here..">
+                    <span class="text-danger" asp-validation-for="Email"></span>
+                </div>
+                <div class="form-group">
+                    <label for="limitInput">BirthDate</label>
+                    <input asp-for="BirthDay" class="form-control" id="BirthDateInput">
+                    <span class="text-danger" asp-validation-for="BirthDay"></span>
+                </div>
+                <div class="form-group">
+                    <label for="limitInput">File</label>
+                    <input asp-for="FormFile" class="form-control" id="FileInput">
+                    @* <input type="hidden" name="ImageName" value="@Model.FormFile" /> *@
+                    <span class="text-danger" asp-validation-for="FormFile"></span>
+                </div>
+               @*  <div class="form-group">
+                    <label for="imgInput">Image</label>
+                    <input asp-for="ImageFile" class="form-control imgInput" placeholder=" ">
+                    <input type="hidden" name="ImageName" value="@Model.Image" />
+                    <div class="preview-box">
+                        <img width="200" class="previewImg" src="~/uploads/slider/@Model.Image" />
+                    </div>
+                    <span class="text-danger" asp-validation-for="ImageFile"></span>
+                </div> *@
+                <button class="btn btn-primary" type="submit">
+                    Create Student
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    @Html.Partial("_ValidationScriptsPartial");
+}
